@@ -115,7 +115,7 @@ function saveHighscore() {
         // Save scores to localstorage
         highscores.push(newScore);
         window.localStorage.setItem("highscores", JSON.stringify(highscores));
-        window.location.href = "highScore.html";
+        window.location.href = "scores.html";
     }
 }
 

@@ -1,8 +1,8 @@
 // Quiz variables
-debugger
 var currentQuestionIndex = 0;
-// var time = questions.length * 15;
+var time = 75;
 var timerId;
+
 
 // Variables for DOM elements
 var timeEl = document.querySelector("#time");
@@ -14,7 +14,6 @@ var highScoreScreen = document.querySelector("#highscore-section");
 var highScoreDisplay = document.querySelector("#highscore-display-section");
 var initialsEl = document.querySelector("#initials");
 var feedbackEl = document.querySelector("#feedback");
-
 var questionsEl = document.querySelector("#question");
 var choicesEl = document.querySelector("#choices");
 
@@ -22,8 +21,10 @@ var choicesEl = document.querySelector("#choices");
 function startQuiz() {
     titleScreen.setAttribute("class", "hide");
     quizScreen.setAttribute("class", "show");
+
     timerId = setInterval(tick, 1000);
     timeEl.textContent = time;
+
     getQuestion();
 }
 
@@ -41,8 +42,10 @@ function tick() {
 function getQuestion() {
     var currentQuestion = questions[currentQuestionIndex];
     var titleEl = document.getElementById("question-title");
+    
     titleEl.textContent = currentQuestion.title;
     choicesEl.innerHTML = "";
+    
     currentQuestion.choices.forEach(function (choice, i) {
         var choiceNode = document.createElement("button");
         choiceNode.setAttribute("class", "choice");
@@ -76,7 +79,7 @@ function questionClick() {
     feedbackEl.setAttribute("class", "feedback");
     setTimeout(function () {
         feedbackEl.setAttribute("class", "feedback hide");
-    }, 1000);
+    }, 1500);
 
     currentQuestionIndex++;
 
@@ -120,7 +123,6 @@ function saveHighscore() {
 }
 
 function checkForEnter(event) {
-    // "13" represents the enter key
     if (event.key === "Enter") {
         saveHighscore();
     }
